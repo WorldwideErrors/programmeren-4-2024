@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "npx mocha -reporter spec test/**/*.test.js --exit"
+    "test": "./node_modules/.bin/mocha -reporter spec test/**/*.test.js --exit"
   },
   "dependencies": {
     "chai": "^5.1.0",
