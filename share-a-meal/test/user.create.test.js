@@ -1,3 +1,11 @@
+const assert = require('assert');
+
+describe('Example Test Suite', function() {
+  it('should pass the example test', function() {
+    assert.strictEqual(1 + 1, 2);
+  });
+});
+
 // const chai = require('chai')
 // const chaiHttp = require('chai-http')
 // const server = require('../index')
