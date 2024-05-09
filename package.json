@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha -reporter spec test/**/*.test.js --exit"
+    "test": "mocha -reporter spec share-a-meal/test/**/*.test.js --exit"
   },
   "author": "Jeffrey van Tillo",
   "license": "ISC",
