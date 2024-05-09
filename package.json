@@ -9,6 +9,8 @@
   "author": "Jeffrey van Tillo",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "chai": "^5.1.1",
+    "express": "^4.19.2",
+    "mocha": "^10.4.0"
   }
 }
