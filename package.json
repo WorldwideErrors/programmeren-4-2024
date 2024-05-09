@@ -4,6 +4,7 @@
   "description": "Share a meal application",
   "main": "index.js",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "mocha -reporter spec test/**/*.test.js --exit"
   },
   "author": "Jeffrey van Tillo",
