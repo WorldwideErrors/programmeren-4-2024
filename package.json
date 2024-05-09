@@ -4,7 +4,7 @@
   "description": "Share a meal application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -reporter spec test/**/*.test.js --exit"
   },
   "author": "Jeffrey van Tillo",
   "license": "ISC",
