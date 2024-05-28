@@ -1,85 +1,115 @@
-const database = require('../dtb/inmem-db');
-const assert = require('assert');
-var logger = require('tracer').console();
+const database = require("../dao/inmem-db");
+const assert = require("assert");
+var logger = require("tracer").console();
+
 // const pool = require('../util/mysql-db');
 // const jwt = require('jsonwebtoken');
 
-const userController = {
-  getAllUsers: (req, res, next) => {
-    logger.info('Get all users');
-    
-    database.getAll((err, data) => {
-        if (err) {
-            console.error(err);
-        } else {
-            console.log(data);
-        }
+let userController = {
+  create: (req, res, next) => {
+    const user = req.body;
+    logger.info("create user", user.firstName, user.lastName);
+    userService.create(user, (error, success) => {
+      if (error) {
+        return next({
+          status: error.status,
+          message: error.message,
+          data: {},
+        });
+      }
+      if (success) {
+        res.status(200).json({
+          status: success.status,
+          message: success.message,
+          data: success.data,
+        });
+      }
     });
   },
 
-  getUserByID: (req, res, next) => {
-    req.userId = 1;
-    logger.trace('Get user profile for user', req.userId);
-    
-    database.getById(req.userId, (err, data) => {
-        if (err) {
-            console.error(err.message);
-        } else {
-            console.log(data);
-        }
+  getAll: (req, res, next) => {
+    logger.trace("getAll");
+    userService.getAll((error, success) => {
+      if (error) {
+        return next({
+          status: error.status,
+          message: error.message,
+          data: {},
+        });
+      }
+      if (success) {
+        res.status(200).json({
+          status: 200,
+          message: success.message,
+          data: success.data,
+        });
+      }
     });
   },
 
-  createUser: (req, res, next) => {
-    logger.info('Register user');
-
-    database.add(
-        {
-            firstName: "Abdi",
-            lastName: "Nageeye",
-            emailAdress: "a.nageeye@server.com",
-        },
-        (err, data) => {
-            if (err) {
-                console.error(err);
-            } else {
-                console.log(data);
-            }
-        }
-    );
-  },
-
-  deleteUser: (req, res) => {
-    const idToDelete = 1; 
-    logger.info('Deleting user with ID: ' + idToDelete);
-
-    database.delete(idToDelete, (err, deletedUser) => {
-        if (err) {
-            console.error(err.message);
-        } else {
-            console.log('Deleted user:', deletedUser);
-        }
+  getById: (req, res, next) => {
+    const userId = req.params.userId;
+    logger.trace("userController: getById", userId);
+    userService.getById(userId, (error, success) => {
+      if (error) {
+        return next({
+          status: error.status,
+          message: error.message,
+          data: {},
+        });
+      }
+      if (success) {
+        res.status(200).json({
+          status: success.status,
+          message: success.message,
+          data: success.data,
+        });
+      }
     });
   },
 
-  editUser: (req, res) => {
-    const userId = 1; // Id of the user to be edited
-    const newData = {
-        firstName: "Bob",
-        lastName: "Green",
-        emailAdress: "bob.green@example.com",
-    };
-
-    logger.info('Editing user with id:', userId);
-
-    database.edit(userId, newData, (err, editedUser) => {
-        if (err) {
-            console.error(err.message);
-        } else {
-            console.log('Edited user:', editedUser);
-        }
+  getProfile: (req, res, next) => {
+    const userId = req.userId;
+    logger.trace("getProfile for userId", userId);
+    userService.getProfile(userId, (error, success) => {
+      if (error) {
+        return next({
+          status: error.status,
+          message: error.message,
+          data: {},
+        });
+      }
+      if (success) {
+        res.status(200).json({
+          status: 200,
+          message: success.message,
+          data: success.data,
+        });
+      }
     });
-  }
+  },
+
+  deleteUser: (req, res, next) => {
+    let id = req.params.id;
+    let userId = req.userId;
+    logger.info("Deleting user with id: ", id);
+    userService.deleteUser(userId, (error, success) => {
+      if (error) {
+        return next({
+          status: error.status,
+          message: error.message,
+          data: {},
+        });
+      }
+      if (success) {
+        res.status(200).json({
+          status: 200,
+          message: success.message,
+          data: success.data,
+        });
+      }
+    });
+  },
 };
 
 module.exports = userController;
