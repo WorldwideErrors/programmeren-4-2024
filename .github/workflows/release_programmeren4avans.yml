@@ -1,3 +1,6 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
 name: Build and deploy Node.js app to Azure Web App - Programmeren4Avans
 
 on:
@@ -16,16 +19,14 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
-
-      - name: Install Mocha
-        run: npm install -g mocha
+          node-version: '18.x'
 
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
-          mocha -reporter spec test/**/*.test.js --exit
+          npm run test --if-present
+
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -56,9 +57,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_50B8FBB8D97C410B8A4FE3919360429C }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_3A1BAD5C28B1443C807471A9E3BF254A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_61FB8905DECD4E39B9FC31B80E2480F2 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A1933028A5F1471EBA86482F17496BDD }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B2CF584BC1B34658B86A1BDD35F7A5F2 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4E03F743C890497FAF1A0404D28350F4 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -67,3 +68,4 @@ jobs:
           app-name: 'Programmeren4Avans'
           slot-name: 'Production'
           package: .
+          
