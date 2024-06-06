@@ -1,4 +1,4 @@
-process.env.DB_DATABASE = process.env.DB_DATABASE
+process.env.DB_DATABASE = process.env.DB_DATABASE || 'sql7712083'
 process.env.LOGLEVEL = 'trace'
 
 const chai = require('chai')
