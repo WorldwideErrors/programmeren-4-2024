@@ -7,7 +7,6 @@ const chaiHttp = require('chai-http')
 const db = require('../src/dao/mysql-db')
 const server = require('../index')
 const tracer = require('tracer')
-
 const logger = require('../src/util/logger')
 
 chai.should()
