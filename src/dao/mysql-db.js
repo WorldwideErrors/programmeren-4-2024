@@ -3,11 +3,11 @@ const logger = require('../util/logger')
 require('dotenv').config()
 
 const dbConfig = {
-    host: process.env.DB_HOST || 'sql7.freesqldatabase.com',
+    host: process.env.DB_HOST || 'share-a-meal2024.mysql.database.azure.com',
     port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || 'sql7712083',
-    password: process.env.DB_PASSWORD || 'kfXw9LPfSn', 
-    database: process.env.DB_DATABASE || 'sql7712083',
+    user: process.env.DB_USER || 'Jeffrey2183234',
+    password: process.env.DB_PASSWORD || 'Geheim123', 
+    database: process.env.DB_DATABASE || 'share-a-meal',
 
     connectionLimit: 10,
     waitForConnections: true,
