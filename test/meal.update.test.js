@@ -1,4 +1,4 @@
-process.env.DB_DATABASE = process.env.DB_DATABASE || 'sql7712083'
+process.env.DB_DATABASE = process.env.DB_DATABASE || 'share-a-meal'
 process.env.LOGLEVEL = 'trace'
 
 const chai = require('chai')
@@ -34,9 +34,9 @@ const INSERT_USER =
 
 const INSERT_MEAL =
     'INSERT INTO `meal` (`id`, `isActive`, `isVega`, `isVegan`, `isToTakeHome`, `dateTime`, `maxAmountOfParticipants`, `price`, `imageUrl`, `cookId`, `name`, `description`) VALUES' +
-    '(1, 1, 0, 0, 0, "2022-04-13 11:24:46", 5, 6.30, "https://www.google.com/url?sa=i&url=https%3A%2F%2Fveneto.ro%2Fproduct%2Fpizza-tonno-e-cipolla-41cm%2F&psig=AOvVaw2E05JDhyUVJ6D0S8g1eEuQ&ust=1717698585809000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDx94KMxYYDFQAAAAAdAAAAABAJ", 1, "Pizza Tonno", "De lekkerste pizza van Rome!"),' +
-    '(2, 0, 1, 0, 1, "2022-05-11 16:34:12", 5, 7.10, "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnl.pngtree.com%2Ffreebackground%2Fcaesar-salad-bowl-on-black-background_2611852.html&psig=AOvVaw02qBBW8DcBnBY26miA9gW6&ust=1717698609096000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKj33I2MxYYDFQAAAAAdAAAAABAE", 3, "Caesar Salad", "Een feestelijke groene maaltijd."),' +
-    '(3, 1, 0, 0, 1, "2023-04-21 18:47:37", 5, 9.50, "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fnl%2Fsearch%3Fk%3Dburger%2Bpng&psig=AOvVaw2JpjV8jaESBJSpBi3TJ7i-&ust=1717698626497000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJiB_pSMxYYDFQAAAAAdAAAAABAE", 2, "Hamburger", "Heb jij ook zin in een heerlijke hamburger met friet?");'
+    '(1, 1, 0, 0, 0, "2022-04-13 11:24:46", 5, 6.30, "https://www.google.com/url?sa=i&url=https", 1, "Pizza Tonno", "De lekkerste pizza van Rome!"),' +
+    '(2, 0, 1, 0, 1, "2022-05-11 16:34:12", 5, 7.10, "https://www.google.com/url?sa=i&url=https%3A%2F%2AE", 3, "Caesar Salad", "Een feestelijke groene maaltijd."),' +
+    '(3, 1, 0, 0, 1, "2023-04-21 18:47:37", 5, 9.50, "https://www.google.com/url?sa=i&url=https%3A%JiB_pAAABAE", 2, "Hamburger", "Heb jij ook zin in een heerlijke hamburger met friet?");'
 
 
 const endpointToTest = '/api/meal'
